@@ -1,0 +1,18 @@
+.containerNav {
+    ul {
+        padding: 30px;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        a {
+            text-decoration: none;
+            li {
+                font-size: 17px;
+                margin-right: 100px;
+                color: #D9C079;
+            }
+        }
+    }
+    
+}

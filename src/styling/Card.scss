@@ -1,0 +1,31 @@
+.container {
+    display: grid;
+    justify-content: center;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    width: 1280px;
+}
+
+.card {
+    width: auto;
+    height: auto;
+    border: 1px solid gray;
+    margin: 5px;
+    text-align: center;
+    padding: 5px;
+    img {
+        width: 100px;
+        height: 100px;
+    }
+    h1 {
+        a {
+            text-decoration: none;
+            color: #D9C079;
+        }
+       
+    }
+
+}

@@ -1,0 +1,19 @@
+body {
+    background-color: #2A594B;
+}
+
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    .hero-container {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+  }
