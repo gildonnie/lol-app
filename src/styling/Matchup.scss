@@ -1,0 +1,110 @@
+.matchup-container {
+  width: 100%;
+  max-width: 1100px; /* Set initial max-width for smaller screens */
+  padding: 13px;
+  margin: 0 auto;
+  background-color: #1F2630;
+  min-height: 100vh; /* Change height to min-height to prevent overflow */
+}
+
+@media screen and (min-width: 768px) {
+  .matchup-container {
+    max-width: 600px; /* Adjust max-width for medium-sized screens */
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .matchup-container {
+    max-width: 800px; /* Adjust max-width for larger screens */
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .matchup-container {
+    max-width: 1100px; /* Adjust max-width for computers */
+  }
+}
+
+/* Add more media queries as needed for different screen sizes */
+
+
+.champion-header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.champion-header img {
+  width: 50px; /* Adjust image size for mobile */
+  height: auto;
+  margin-right: 10px;
+}
+
+.matchup-info {
+  // background-color: rgb(13, 13, 46);
+}
+
+.matchup-info p {
+  margin-bottom: 8px; /* Adjust margin for better spacing */
+}
+
+.abilities {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.img-hover {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-text {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s linear;
+  width: 300px;
+}
+
+.img-hover:hover .hover-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.difficulty {
+  display: flex;
+  width: 20%;
+  background-color: rgb(13, 13, 46);
+  align-content: center;
+  justify-content: center;
+}
+
+.info-container {
+  background-color: rgb(13, 13, 46);
+  padding: 20px;
+}
+
+.items-container {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+
+.summoner-spells {
+  display: grid;
+  flex-direction: column;
+  width: 100%;
+  justify-items: center;
+}
+
+.summoner-spells h1 {
+  justify-self: flex-start;
+}

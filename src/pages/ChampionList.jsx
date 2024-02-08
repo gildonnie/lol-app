@@ -6,6 +6,8 @@ import Nav from '../components/Nav'
 
 function Data() {
   const champions = useSelector((state) => state.champions);
+  const version = useSelector(state => state.version);
+  
   console.log(champions)
   return (
     <div className="container">
@@ -14,7 +16,7 @@ function Data() {
         {Object.keys(champions).map((championKey) => {
           const champion = champions[championKey];
           const championName = champion.id;
-          const imageUrl = `http://ddragon.leagueoflegends.com/cdn/13.11.1/img/champion/${championName}.png`;
+          const imageUrl = `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${championName}.png`;
           return (
             <div className="card" key={championKey}>
               <h1>

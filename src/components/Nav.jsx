@@ -10,7 +10,7 @@ function Nav() {
             <ul>
                 <Link to="/"><li>Home</li></Link>
                 <Link to="/champions"><li>Champions</li></Link>
-                <Link to="/matchups"><li>Matchups</li></Link>
+                <Link to="/other"><li>Other</li></Link>
             </ul>
         </div>
 

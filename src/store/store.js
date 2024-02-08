@@ -1,9 +1,12 @@
 // store.js
 import { createStore } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 // Define the initial state
 const initialState = {
   champions: {},
+  version: null,
 };
 
 // Define the reducer function
@@ -14,12 +17,26 @@ const reducer = (state = initialState, action) => {
         ...state,
         champions: action.payload,
       };
+    case 'SET_VERSION':
+      return {
+        ...state,
+        version: action.payload,
+      };
     default:
       return state;
   }
 };
 
-// Create the Redux store
-const store = createStore(reducer);
+// Configure persist reducer
+const persistConfig = {
+  key: 'root',
+  storage,
+};
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, reducer);
+
+// Create the Redux store
+const store = createStore(persistedReducer);
+const persistor = persistStore(store);
+
+export { store, persistor };
