@@ -32,6 +32,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 80px;
 }
 
 .champion-header img {
@@ -57,7 +58,12 @@
 .img-hover {
   position: relative;
   display: inline-block;
+  img {
+    margin: 0;
+  }
 }
+
+
 
 .hover-text {
   position: absolute;
@@ -107,4 +113,20 @@
 
 .summoner-spells h1 {
   justify-self: flex-start;
+}
+
+.items {
+  display: grid;
+  flex-direction: column;
+  width: 100%;
+  justify-items: center;
+}
+
+.items h1 {
+  justify-self: flex-start;
+}
+
+.ability-letter {
+  font-size: 13px;
+  text-align: center;
 }
