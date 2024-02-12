@@ -23,18 +23,22 @@ function ChampionDetails() {
     cloth: {},
   })
   const [itemImg, setItemImg] = useState({
-    item1: '',
-    item2: '',
-    item3: ''
+    item1: {},
+    item2: {},
+    item3: {}
   });
 
   const [sumSpells, setSumSpells] = useState({
-    ignite: '',
-    ghost: '',
-    flash: '',
-    cleanse: ''
+    ignite: {},
+    ghost: {},
+    flash: {},
+    cleanse: {}
   })
 
+  const [sumImg, setSumImg] = useState({
+    sum1: {},
+    sum2: {}
+  })
 
   const { championName } = useParams();
   const version = useSelector(state => state.version);
@@ -83,7 +87,6 @@ function ChampionDetails() {
       getAbilities()
     }, [championName])
 
-console.log(sumSpells)
     useEffect(() => {
       switch (matchingChampion['STARTING ITEM']) {
         case "1":
@@ -129,9 +132,29 @@ console.log(sumSpells)
       } 
     }, [matchingChampion, items])
  
-    // console.log(itemImg.item1.full)
+    useEffect(() => {
+      switch (matchingChampion['SUMMONERS']) {
+        case "5":
+          setSumImg({
+           sum1: sumSpells.ignite.image,
+           sum2: sumSpells.ghost.image
+          })
+          break
+        case "6":
+          setSumImg({
+            sum1: sumSpells.ghost.image,
+            sum2: sumSpells.flash.image
+           })
+           console.log(sumImg)
+          break
+        default: 
+        setSumImg('')
+      } 
+    }, [matchingChampion, sumSpells])
+    // console.log(sumImg.sum1.full)
 // https://ddragon.leagueoflegends.com/cdn/14.3.1/data/en_US/item.json item json
 // https://ddragon.leagueoflegends.com/cdn/12.3.1/img/item/1001.png item img
+// https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/SummonerFlash.png
 
   return (
     <div className='body-container'>
@@ -181,27 +204,34 @@ console.log(sumSpells)
                     <h1>Starting Items</h1>
                     {itemImg.item1 && itemImg.item1.full && itemImg.item2 && itemImg.item2.full && (
                       <>
-                        <img src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/item/${itemImg.item1.full}`} alt="starting item" />
-                        <img src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/item/${itemImg.item2.full}`} alt="starting item" />
+                        <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${itemImg.item1.full}`} alt="starting item" />
+                        <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${itemImg.item2.full}`} alt="starting item" />
                       </>
                     )}
                     {itemImg.item3 ? itemImg.item3 && itemImg.item3.full && (
                       <>
                         <h1>OR</h1>
-                        <img src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/item/${itemImg.item3.full}`} alt="starting item" />
-                        <img src={`https://ddragon.leagueoflegends.com/cdn/12.3.1/img/item/${itemImg.item2.full}`} alt="starting item" />
+                        <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${itemImg.item3.full}`} alt="starting item" />
+                        <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${itemImg.item2.full}`} alt="starting item" />
                         <p>X 3</p>
                       </>
                     ) : null}
                   </div>
                   <div className="summoner-spells">
                     <h1>Starting Spells</h1>
-                    <img src="" alt="spells" />
-                    <img src="" alt="spells" />
+                    {sumImg.sum1 && sumImg.sum1.full && sumImg.sum2 && sumImg.sum2.full && (
+                      <>
+                        <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${sumImg.sum1.full}`} alt="spells" />
+                        <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${sumImg.sum2.full}`} alt="spells" />
+                      </>
+                    )}
                   </div>
                 </div>    
               </div>
-              <h1>Strat</h1>
+              <div className="start-header">
+                <h1>Strat</h1>
+                <p>Updated: {matchingChampion["LAST UPDATED"] ? matchingChampion["LAST UPDATED"] : "Not Updated Yet"}</p>
+              </div>
               <p>{matchingChampion['WHAT TO DO']}</p>
             </div>
           </div>
