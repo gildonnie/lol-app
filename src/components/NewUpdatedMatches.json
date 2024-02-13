@@ -90,7 +90,7 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "Aurelion Sol",
+        "CHAMPION": "AurelionSol",
         "DIFFICULTY": "Easy",
         "STARTING ITEM": "3",
         "SUMMONERS": "6",
@@ -117,7 +117,7 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "Bel'veth",
+        "CHAMPION": "Belveth",
         "DIFFICULTY": "Easy",
         "STARTING ITEM": "1",
         "SUMMONERS": "6",
@@ -180,7 +180,7 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "Cho'Gath",
+        "CHAMPION": "Chogath",
         "DIFFICULTY": "Medium",
         "STARTING ITEM": "3",
         "SUMMONERS": "6",
@@ -216,7 +216,7 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "Dr. Mundo",
+        "CHAMPION": "DrMundo",
         "DIFFICULTY": "Easy",
         "STARTING ITEM": "1",
         "SUMMONERS": "6",
@@ -459,7 +459,7 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "K'Sante",
+        "CHAMPION": "KSante",
         "DIFFICULTY": "Medium",
         "STARTING ITEM": "1",
         "SUMMONERS": "6",
@@ -549,7 +549,7 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "Kha Zix",
+        "CHAMPION": "Khazix",
         "DIFFICULTY": "Easy",
         "STARTING ITEM": "1",
         "SUMMONERS": "6",
@@ -576,7 +576,7 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "Kog Maw",
+        "CHAMPION": "KogMaw",
         "DIFFICULTY": "INTeresting",
         "STARTING ITEM": "1",
         "SUMMONERS": "6",
@@ -594,10 +594,10 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "Lee Sin",
+        "CHAMPION": "LeeSin",
         "DIFFICULTY": "Easy",
         "STARTING ITEM": "3",
-        "SUMMONERS": " 6, 7",
+        "SUMMONERS": "6, 7",
         "RUNES (if different from default)": "",
         "WHAT TO DO": "Lethal Tempo Runes and Build. Lee sin really needs to hit his q in order to get effective trades on you. This is hard in a solo lane because you can always use minions to block his q and trading within a minion wave is no problem for Tryndamere. Lee sin has decent short trades if he hits his q, but tryndamere's all in is significantly better and it is easy for him to force trades. Post 6 Lee sin will look to burst you, with q + auto attack + e + ult + q + auto attack, then kite away with his w while you ult. Make sure you stay at a high amount of health so he cant do this burst without you being able to follow up. If Lee sin uses his ulti and doesnt burn your ultimate that is a HUGE advantage for you. Always look to start trades off with lee sin with an auto attack that way you can still use your spin to stick onto him when he w's away. In the mid-late game Tryndamere outscales Lee sin in the 1v1. Just have to be careful with Leesin's burst to make sure you dont miss your ultimate.",
         "LAST UPDATED": ""
@@ -684,7 +684,7 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "Master Yi",
+        "CHAMPION": "MasterYi",
         "DIFFICULTY": "Easy",
         "STARTING ITEM": "3",
         "SUMMONERS": "6",
@@ -693,7 +693,7 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "Miss Fortune",
+        "CHAMPION": "MissFortune",
         "DIFFICULTY": "Easy",
         "STARTING ITEM": "1",
         "SUMMONERS": "6",
@@ -882,7 +882,7 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "Rek Sai",
+        "CHAMPION": "RekSai",
         "DIFFICULTY": "Easy",
         "STARTING ITEM": "3",
         "SUMMONERS": "7",
@@ -900,7 +900,7 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "Renata Glasc",
+        "CHAMPION": "RenataGlasc",
         "DIFFICULTY": "Easy",
         "STARTING ITEM": "1",
         "SUMMONERS": "6",
@@ -1110,7 +1110,7 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "Tahm Kench",
+        "CHAMPION": "TahmKench",
         "DIFFICULTY": "Medium",
         "STARTING ITEM": "1",
         "SUMMONERS": "6",
@@ -1191,7 +1191,7 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "Twisted Fate",
+        "CHAMPION": "TwistedFate",
         "DIFFICULTY": "Medium",
         "STARTING ITEM": "1",
         "SUMMONERS": "6",
@@ -1353,7 +1353,7 @@
         "LAST UPDATED": ""
     },
     {
-        "CHAMPION": "Xin Zhao",
+        "CHAMPION": "XinZhao",
         "DIFFICULTY": "Medium",
         "STARTING ITEM": "3",
         "SUMMONERS": "7",

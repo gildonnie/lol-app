@@ -25,7 +25,8 @@ function ChampionDetails() {
   const [itemImg, setItemImg] = useState({
     item1: {},
     item2: {},
-    item3: {}
+    item3: {},
+    item4: ''
   });
 
   const [sumSpells, setSumSpells] = useState({
@@ -37,7 +38,8 @@ function ChampionDetails() {
 
   const [sumImg, setSumImg] = useState({
     sum1: {},
-    sum2: {}
+    sum2: {},
+    sum3: {}
   })
 
   const { championName } = useParams();
@@ -47,7 +49,10 @@ function ChampionDetails() {
     champion => champion.CHAMPION === championName
   );
 
+  console.log(championName)
+
   const imageUrl = `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${championName}.png`;
+  const tryndImg = `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/Tryndamere.png`;
 
     useEffect(() => {
       const getAbilities = async () => {
@@ -104,7 +109,8 @@ function ChampionDetails() {
         case "3":
           setItemImg({
             item1: items.lSword.image,
-            item2: items.potion.image
+            item2: items.potion.image,
+            item4: 'X3'
            })
           break
         case "4":
@@ -117,14 +123,16 @@ function ChampionDetails() {
           setItemImg({
             item1: items.dShield.image,
             item2: items.potion.image,
-            item3: items.lSword.image
+            item3: items.lSword.image,
+            item4: 'X3'
            })
           break
           case "2, 3":
           setItemImg({
             item1: items.dBlade.image,
             item2: items.potion.image,
-            item3: items.lSword.image
+            item3: items.lSword.image,
+            item4: 'X3'
            })
           break
         default: 
@@ -145,8 +153,40 @@ function ChampionDetails() {
             sum1: sumSpells.ghost.image,
             sum2: sumSpells.flash.image
            })
-           console.log(sumImg)
           break
+          case "7":
+          setSumImg({
+            sum1: sumSpells.ignite.image,
+            sum2: sumSpells.flash.image
+           })
+          break
+          case "8":
+          setSumImg({
+            sum1: sumSpells.cleanse.image,
+            sum2: sumSpells.flash.image
+           })
+          break
+          case "6, 7":
+            setSumImg({
+              sum1: sumSpells.flash.image,
+              sum2: sumSpells.ghost.image,
+              sum3: sumSpells.ignite.image
+             })
+            break
+            case "5, 6":
+              setSumImg({
+                sum1: sumSpells.ghost.image,
+                sum2: sumSpells.flash.image,
+                sum3: sumSpells.ignite.image
+               })
+              break
+              case "6, 8":
+                setSumImg({
+                  sum1: sumSpells.flash.image,
+                  sum2: sumSpells.ghost.image,
+                  sum3: sumSpells.cleanse.image
+                 })
+                break
         default: 
         setSumImg('')
       } 
@@ -161,7 +201,11 @@ function ChampionDetails() {
       {matchingChampion ? (
         <div className='matchup-container'>
           <div className='champion-header'>
-            <img src={imageUrl} alt={championName} />
+            <div className="vs">
+              <img className='champ' src={tryndImg} alt="trynd" />
+              <h1>VS</h1>
+              <img className='champ' src={imageUrl} alt={championName} />
+            </div>
             <h1>{matchingChampion.Champion}</h1>
             <div className="abilities">
               {
@@ -206,6 +250,9 @@ function ChampionDetails() {
                       <>
                         <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${itemImg.item1.full}`} alt="starting item" />
                         <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${itemImg.item2.full}`} alt="starting item" />
+                        {itemImg.item4 && !itemImg.item3 ? (
+                          <p className='x3'>{itemImg.item4}</p>
+                        ) : null}
                       </>
                     )}
                     {itemImg.item3 ? itemImg.item3 && itemImg.item3.full && (
@@ -213,7 +260,9 @@ function ChampionDetails() {
                         <h1>OR</h1>
                         <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${itemImg.item3.full}`} alt="starting item" />
                         <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${itemImg.item2.full}`} alt="starting item" />
-                        <p>X 3</p>
+                        {itemImg.item4 ? (
+                          <p className='x3'>{itemImg.item4}</p>
+                        ) : null}
                       </>
                     ) : null}
                   </div>
@@ -225,6 +274,13 @@ function ChampionDetails() {
                         <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${sumImg.sum2.full}`} alt="spells" />
                       </>
                     )}
+                    {sumImg.sum3 ? sumImg.sum3 && sumImg.sum3.full && (
+                      <>
+                        <h1>OR</h1>
+                        <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${sumImg.sum1.full}`} alt="spells" />
+                        <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${sumImg.sum3.full}`} alt="spells" />
+                      </>
+                    ) : null}
                   </div>
                 </div>    
               </div>

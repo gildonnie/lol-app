@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../styling/Card.scss';
-import Nav from '../components/Nav'
 
 function Data() {
   const champions = useSelector((state) => state.champions);
@@ -11,7 +10,6 @@ function Data() {
   console.log(champions)
   return (
     <div className="container">
-      <Nav />
       <div className="wrapper">
         {Object.keys(champions).map((championKey) => {
           const champion = champions[championKey];

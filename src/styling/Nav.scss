@@ -1,4 +1,8 @@
 .containerNav {
+    // background-color: #626B6A;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
     ul {
         padding: 30px;
         margin: 0;
@@ -9,8 +13,9 @@
             text-decoration: none;
             li {
                 font-size: 17px;
+                font-weight: bolder;
                 margin-right: 100px;
-                color: #3E939A;
+                color: #ffffff;
             }
         }
     }

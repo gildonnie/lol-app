@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import '../styling/Home.scss';
-import Nav from '../components/Nav';
 import styled from 'styled-components';
 import ChampNames from '../components/Champions.json';
+import Bg from '../imgs/bg.jpg';
+import Logo from '../imgs/logo4.png';
+import Background from '../imgs/background1.png'
+import Nav from '../components/Nav.jsx';
 
 const HeroImg = styled.div`
-  background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, 0.5)), url(${props => props.imageUrl});
+  background-image: linear-gradient(rgba(0, 0, 0, .25), rgba(0, 0, 0, 0.25)), url(${Background});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -16,14 +19,26 @@ const HeroImg = styled.div`
   .header {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 80vh;
-    h1{
-      font-size: 60px;
+    z-index: auto;
+    img {
+      width: 900px;
+      margin-top: -60px;
     }
   }
 `;
 
+
+const Section = styled.div`
+  background-image: linear-gradient(rgba(0, 0, 0, .25), rgba(0, 0, 0, 0.25)), url(${Bg});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  h1 {
+    margin: 0;
+  }
+`;
 function Home() {
   const dispatch = useDispatch();
   const [skinNumber, setSkinNumber] = useState();
@@ -71,37 +86,45 @@ function Home() {
   return (
     <div className='main'>
       <HeroImg imageUrl={championImg}>
-        <Nav />
+      <Nav />
         <div className='header'>
-          <h1>
+          <img className='logo' src={Logo} alt="logo" />
+          {/* <h1>
             League of Tryndamere
-          </h1>
+          </h1> */}
         </div>
       </HeroImg>
-      <div className='infoContainer'>
-        <div>
+      <Section>
+        <div className="header-section">
+          <h1>Tryndamere <br/>Lore</h1>
+        </div>
+        <div className="infoContainer">
           <div>
-            <img src="" alt="" />
-            <p>Role: Fighter</p>
+            <div>
+              <img src="" alt="" />
+              <p>Role: Fighter</p>
+            </div>
+            <div>
+              <img src="" alt="" />
+              <p>Difficulty: Moderate</p>
+            </div>
           </div>
           <div>
-            <img src="" alt="" />
-            <p>Difficulty: Moderate</p>
+            <p>Fueled by unbridled fury and rage, Tryndamere once carved his way through the Freljord, openly challenging the greatest warriors of the north to prepare himself for even darker days ahead. The wrathful barbarian has long sought revenge for the annihilation of his clan, though more recently he has found companionship with Ashe, the Avarosan warmother, and a home with her people. His almost inhuman strength and fortitude is legendary, and has delivered him and his new allies countless victories against the greatest of odds.</p>
           </div>
         </div>
-        <div>
-          <p>Fueled by unbridled fury and rage, Tryndamere once carved his way through the Freljord, openly challenging the greatest warriors of the north to prepare himself for even darker days ahead. The wrathful barbarian has long sought revenge for the annihilation of his clan, though more recently he has found companionship with Ashe, the Avarosan warmother, and a home with her people. His almost inhuman strength and fortitude is legendary, and has delivered him and his new allies countless victories against the greatest of odds.</p>
+      </Section>  
+      <Section>
+        <div className="abilitiesContainer">
+          <div className="abilityImg">
+            <img src="" alt="" />
+            <p className="abilityInfo"></p>
+          </div>
+          <div className="video">
+            <iframe src="" frameborder="0"></iframe>
+          </div>
         </div>
-      </div>  
-      <div className='abilitiesContainer'>
-        <div className="abilityImg">
-          <img src="" alt="" />
-          <p className="abilityInfo"></p>
-        </div>
-        <div className="video">
-          <iframe src="" frameborder="0"></iframe>
-        </div>
-      </div>
+      </Section>
     </div>
   );
 }
