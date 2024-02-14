@@ -213,7 +213,6 @@ function ChampionDetails() {
                   const capitlized = ability.toUpperCase().charAt(0)
                   const abilityData = abilities[ability];
                   if (!abilityData || !abilityData.image) {
-                    // If ability data or image data is missing, skip rendering
                     return null;
                   }
                   return (
