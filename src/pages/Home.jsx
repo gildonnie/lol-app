@@ -5,15 +5,38 @@ import '../styling/Home.scss';
 import styled from 'styled-components';
 import ChampNames from '../components/Champions.json';
 import { useSelector } from 'react-redux';
+import ReactPlayer from 'react-player';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import Bg from '../imgs/bg.jpg';
 import Logo from '../imgs/logo4.png';
 import Background from '../imgs/background1.png'
+import TryndLife from '../imgs/tryndLife.jpeg'
+import TryndFight from '../imgs/trynFight.jpeg'
 import Nav from '../components/Nav.jsx';
 import pVid from '../videos/passive.mp4';
 import qVid from '../videos/q.mp4';
 import wVid from '../videos/w.mp4';
 import eVid from '../videos/e.mp4';
 import rVid from '../videos/r.mp4';
+
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 3
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1
+  }
+};
 
 const HeroImg = styled.div`
   background-image: linear-gradient(rgba(0, 0, 0, .25), rgba(0, 0, 0, 0.25)), url(${Background});
@@ -42,6 +65,8 @@ const Section = styled.div`
   width: 100%;
   min-height: 100vh;
   max-height: auto;
+  position: relative;
+  padding-bottom: 200px;
   h1 {
     margin: 0;
   }
@@ -50,13 +75,26 @@ const Section = styled.div`
   }
 `;
 
+const SectionContainer = styled.div `
+  max-width: 1080px;
+  margin: 0 auto;
+  min-height: 100%;
+  height: 100%; /* Set height to 100% */
+  position: absolute;
+  position: relative; /* Use relative positioning */
+`
+
 function Home() {
   const dispatch = useDispatch();
   const [skinNumber, setSkinNumber] = useState();
   const [champName, setChampName] = useState();
+  const [tryndSkins, setTryndSkins] = useState({});
   const [championImg, setChampionImg] = useState('');
-  const [description, setDescription] = useState('');
-  const [abilityVid, setAbilityVid] = useState();
+  const [abilityVid, setAbilityVid] = useState(pVid);
+  const [descriptionInfo, setDescriptionInfo] = useState({
+    description: 'Tryndamere gains Fury for each attack, critical strike, and killing blow he makes. Fury passively increases his Critical Strike Chance and can be consumed with his Bloodlust spell.',
+    abilityName: 'Battle Fury'
+  });
   const [abilities, setAbiliites] = useState({
       passive: {},
       q: {},
@@ -64,6 +102,7 @@ function Home() {
       e: {},
       r: {}
   })
+
   const tryn = "Tryndamere";
   const version = useSelector(state => state.version);
 
@@ -78,23 +117,23 @@ function Home() {
         const championsResponse = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`);
         dispatch({ type: 'SET_CHAMPIONS', payload: championsResponse.data.data });
 
-        const champNameData = Object.values(ChampNames);
-        const randomIndexName = Math.floor(Math.random() * champNameData.length);
-        const randomName = champNameData[randomIndexName];
-        const nameRandom = randomName.name;
-        console.log(nameRandom);
-        setChampName(nameRandom);
+        // const champNameData = Object.values(ChampNames);
+        // const randomIndexName = Math.floor(Math.random() * champNameData.length);
+        // const randomName = champNameData[randomIndexName];
+        // const nameRandom = randomName.name;
+        // console.log(nameRandom);
+        // setChampName(nameRandom);
 
-        const champResponse = await axios.get(`http://ddragon.leagueoflegends.com/cdn/13.11.1/data/en_US/champion/${tryn}.json`);
-        // const champResponse = await axios.get(`http://ddragon.leagueoflegends.com/cdn/13.11.1/data/en_US/champion/${nameRandom}.json`);
+        const champResponse = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/${tryn}.json`);
         const skin = champResponse.data.data[tryn].skins;
-        const skinsData = Object.values(skin);
-        const randomIndex = Math.floor(Math.random() * skinsData.length);
-        const randomSkin = skinsData[randomIndex];
-        setSkinNumber(randomSkin.num);
+        setTryndSkins(skin);
+        // const skinsData = Object.values(skin);
+        // const randomIndex = Math.floor(Math.random() * skinsData.length);
+        // const randomSkin = skinsData[randomIndex];
+        // setSkinNumber(randomSkin.num);
 
-        const imgURL = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${tryn}_${randomSkin.num}.jpg`;
-        setChampionImg(imgURL);
+        // const imgURL = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${tryn}_${randomSkin.num}.jpg`;
+        // setChampionImg(imgURL);
       } catch (error) {
         console.log('Error occurred:', error);
         // Handle the error here, such as showing an error message or performing any necessary cleanup
@@ -123,12 +162,11 @@ function Home() {
       }
     }
     tryndAbility()
-  }, [])
+  }, [version])
 
   console.log(abilities)
 
   const handleAbility = (id) => {
-    setDescription(abilities[id].description)
     switch (id) {
       case 'passive':
         setAbilityVid(pVid)
@@ -145,10 +183,18 @@ function Home() {
       case 'r':
       setAbilityVid(rVid)
       break
+      default:
+      setAbilityVid('')
     }
+    setDescriptionInfo({
+      description: abilities[id].description,
+      abilityName: abilities[id].name
+
+    })
+    
     
   }
- 
+ console.log(tryndSkins)
   return (
     <div className='main'>
       <HeroImg imageUrl={championImg}>
@@ -162,7 +208,7 @@ function Home() {
       </HeroImg>
       <Section>
         <div className="header-section">
-          <img src={Background} alt="trynd" />
+          <img src={TryndLife} alt="trynd" />
           <div className='header-text'>
             <h2 className='vertical-text'>Early Life</h2>
             <h1>Tryndamere <br/>Lore</h1>
@@ -177,71 +223,93 @@ function Home() {
         </div>
       </Section>
       <Section>
-        <div className="infoContainer">
-          <div>
-            <div>
-              <img src="" alt="" />
-              <p>Role: Fighter</p>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <p>Difficulty: Moderate</p>
-            </div>
-          </div>
-          <div>
-            <p>Fueled by unbridled fury and rage, Tryndamere once carved his way through the Freljord, openly challenging the greatest warriors of the north to prepare himself for even darker days ahead. The wrathful barbarian has long sought revenge for the annihilation of his clan, though more recently he has found companionship with Ashe, the Avarosan warmother, and a home with her people. His almost inhuman strength and fortitude is legendary, and has delivered him and his new allies countless victories against the greatest of odds.</p>
+        <div className="header-section2">
+        <img src={TryndFight} alt="trynd" />
+          <div className='header-text2'>
+            <h1>Role Fighter</h1>
+            <h2>Difficulty Moderate</h2>
           </div>
         </div>
-      </Section>  
-      <Section>
-        <div className="abilitiesContainer">
-          <div className="abilityImg">
-            <img src="" alt="" />
-            <p className="abilityInfo"></p>
-          </div>
-          <div className="video">
-            <iframe src="" frameborder="0"></iframe>
-          </div>
+        <div className='lore-p2'>
+          <p>Fueled by unbridled fury and rage, Tryndamere once carved his way through the Freljord, openly challenging the greatest warriors of the north to prepare himself for even darker days ahead. The wrathful barbarian has long sought revenge for the annihilation of his clan, though more recently he has found companionship with Ashe, the Avarosan warmother, and a home with her people. His almost inhuman strength and fortitude is legendary, and has delivered him and his new allies countless victories against the greatest of odds.</p>
         </div>
       </Section>
       <Section>
-        <div className="header-section2">
-          <div className='header-text2'>
-            <h2 className='vertical-text2'>Into Battle</h2>
-            <h1>Tryndamere <br/>Abilities</h1>
+        <SectionContainer>
+          <div className="header-section3">
+            <div className='header-text3'>
+              <h2 className='vertical-text3'>Into Battle</h2>
+              <h1>Tryndamere <br/>Abilities</h1>
+            </div>
           </div>
-        </div>
-        <div className='trynd-abilities'>
-            <div className='ability-icons'>
-              <div className="abilities">
-                {
-                  Object.keys(abilities).map((ability) => {
-                    const capitlized = ability.toUpperCase().charAt(0)
-                    const abilityData = abilities[ability];
-                    if (!abilityData || !abilityData.image) {
-                      return null;
-                    }
-                    return (
-                      <div key={ability.id} className='img-hover'>
-                        <h1 className='ability-letter-home'>{capitlized}</h1>
-                        {!abilityData.id ? 
-                        <img onClick={() => handleAbility(ability)} src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${abilityData.image.full}`} alt="" /> : null}
-                        <img onClick={() => handleAbility(ability)} key={ability.id} src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${abilityData.image.full}`} alt="" />
-                      </div>
-                    );
-                  })
-                }
+          <div className='trynd-abilities'>
+              <div className='ability-icons'>
+                <div className="abilities-home">
+                  {
+                    Object.keys(abilities).map((ability) => {
+                      const capitlized = ability.toUpperCase().charAt(0)
+                      const abilityData = abilities[ability];
+                      if (!abilityData || !abilityData.image) {
+                        return null;
+                      }
+                      return (
+                        <div key={ability.id} className='img-hover'>
+                          <h1 className='ability-letter-home'>{capitlized}</h1>
+                          {!abilityData.id ? 
+                          <img onClick={() => handleAbility(ability)} src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${abilityData.image.full}`} alt="" /> : null}
+                          <img onClick={() => handleAbility(ability)} key={ability.id} src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${abilityData.image.full}`} alt="" />
+                        </div>
+                      );
+                    })
+                  }
+                </div>
+                <div className="ability-description">
+                  <h2>{descriptionInfo.abilityName}</h2>
+                  <p>{descriptionInfo.description}</p>
+                </div>
               </div>
-              <div className="ability-description">
-                <p>{description}</p>
+              <div className='ability-vid'>
+                <ReactPlayer
+                    url={abilityVid}
+                    loop
+                    muted
+                    width="100%"
+                    height="100%"
+                    playing
+                  />
               </div>
+          </div>
+        </SectionContainer>
+      </Section>
+      <Section className='carousel-section'>
+        <div className="carousel-contain">
+          <div className="header-section4">
+            <div className='header-text4'>
+              <h2 className='vertical-text4'>Now they die!</h2>
+              <h1>Tryndamere <br/>skins</h1>
             </div>
-            <div className='ability-vid'>
-              <video width="320" height="240" playsInline loop muted>
-                <source src={abilityVid} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+          </div>
+          <Carousel
+            responsive={responsive}
+            ssr
+            showDots
+            infinite
+            containerClass="container-with-dots"
+            itemClass="image-item"
+            // deviceType={this.props.deviceType}
+          >
+            {Object.keys(tryndSkins).map((skin) => {
+              const skinNum = tryndSkins[skin].num;
+              const skinImg = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${tryn}_${skinNum}.jpg`
+              const name = tryndSkins[skin].name;
+              return (
+                <div className='skin-container'>
+                  <h2 className='skin-name'>{name}</h2>
+                  <img src={skinImg} alt="tryn-skin" />
+                </div>
+              )
+            })}
+          </Carousel>
         </div>
       </Section>
     </div>
