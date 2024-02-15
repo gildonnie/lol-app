@@ -1,14 +1,13 @@
 .container {
     display: grid;
     justify-items: center;
-
 }
 
 .wrapper {
     display: grid;
     grid-template-columns: repeat(4, auto);
     width: 1280px;
-    margin-top: 30px;
+
 }
 
 .card {
@@ -18,6 +17,7 @@
     margin: 5px;
     text-align: center;
     padding: 5px;
+    background-color: #1B0D1C;
     img {
         width: 100px;
         height: 100px;

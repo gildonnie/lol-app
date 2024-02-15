@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import ReactPlayer from 'react-player';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { motion } from 'framer-motion';
 import Bg from '../imgs/bg.jpg';
 import Logo from '../imgs/logo4.png';
 import Background from '../imgs/background1.png'
@@ -256,8 +257,8 @@ function Home() {
                         <div key={ability.id} className='img-hover'>
                           <h1 className='ability-letter-home'>{capitlized}</h1>
                           {!abilityData.id ? 
-                          <img onClick={() => handleAbility(ability)} src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${abilityData.image.full}`} alt="" /> : null}
-                          <img onClick={() => handleAbility(ability)} key={ability.id} src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${abilityData.image.full}`} alt="" />
+                          <motion.img whileHover={{ scale: 1.1 }} onClick={() => handleAbility(ability)} src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${abilityData.image.full}`} alt="" /> : null}
+                          <motion.img whileHover={{ scale: 1.1 }} onClick={() => handleAbility(ability)} key={ability.id} src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${abilityData.image.full}`} alt="" />
                         </div>
                       );
                     })
