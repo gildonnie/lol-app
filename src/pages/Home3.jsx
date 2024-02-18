@@ -40,7 +40,7 @@ const responsive = {
 };
 
 
-function Home () {
+function Home() {
   const dispatch = useDispatch();
   const [skinNumber, setSkinNumber] = useState();
   const [champName, setChampName] = useState();
@@ -150,52 +150,56 @@ function Home () {
     
     
   }
-  
-
+ console.log(tryndSkins)
   return (
-    <Container fluid className='main'>
-      <Container fluid className='hero-image'>
-        <Row className='header'>
+    <div className='main'>
+      <div className='hero-image' imageUrl={championImg}>
+      {/* <Nav /> */}
+        <div className='header'>
           <img className='logo' src={Logo} alt="logo" />
-        </Row>
-      </Container>
-      <Container>
-        <Row className="header-section">
+          {/* <h1>
+            League of Tryndamere
+          </h1> */}
+        </div>
+      </div>
+      <div className='section'>
+        <div className="header-section">
           <img src={TryndLife} alt="trynd" />
-        </Row>
-        <Row className='lore-p'>
           <div className='header-text'>
             <h2 className='vertical-text'>Early Life</h2>
             <h1>Tryndamere <br/>Lore</h1>
           </div>
+        </div>
+        <div className='lore-p'>
           <p>Tryndamere was part of a nameless barbarian tribe known for their stamina and prowess in combat, which forged blades based on their god's tusks. They fought raiding tribes, the beasts of the mountains and Noxus Crest icon Noxian armies trying to claim territory in the Freljord. As he grew up among his tribe, Tryndamere developed into a strong warrior.
 
           One night, the tribe witnessed an unnatural storm from the east, where the darkin Aatrox Aatrox stood before them. Some of the barbarians bowed to him under the belief that he was their Boar God Boar God, but he slaughtered them all. Filled with rage, Tryndamere charged at Aatrox, but was swatted away. As he lay on the verge of death, he was revived by a rage he never felt before, his willpower and thirst for vengeance preventing him from dying.
 
           Tryndamere found his tribe's last remaining survivors, knowing they were doomed with enemies surrounding them throughout the Freljord. Hearing rumors of a tribe which worshipped the reincarnation of Avarosa, they set off to the west where they met the Freljord Avarosan Avarosan. Eager to gain respect among the tribe, he challenged the Avarosans to duels. However, they began to fear him due to his savage, furious way of fighting and how his wounds regenerated faster the more rage he held. In one duel he was so lost in his fury that he was on the verge of killing his opponent, but Braum Braum, an Iceborn allied with the Avarosan, stood in the way with his shield. Tryndamere kept attacking Braum's unbreakable shield until his rage subsided, and the two eventually became friends. Afterward, the tribe's survivors were welcomed into the Avarosan and Tryndamere was arranged to form a political marriage with the Avarosan warmother, Ashe Ashe, but the two slowly grew into a genuine relationship.</p>
-        </Row>
-      </Container>
-      <Container>
-        <Row className="header-section2">
-          <img src={TryndFight} alt="trynd" />
-        </Row>
-        <Row className='lore-p2'>
+        </div>
+      </div>
+      <div className='section'>
+        <div className="header-section2">
+        <img src={TryndFight} alt="trynd" />
           <div className='header-text2'>
             <h1>Role Fighter</h1>
             <h2>Difficulty Moderate</h2>
           </div>
+        </div>
+        <div className='lore-p2'>
           <p>Fueled by unbridled fury and rage, Tryndamere once carved his way through the Freljord, openly challenging the greatest warriors of the north to prepare himself for even darker days ahead. The wrathful barbarian has long sought revenge for the annihilation of his clan, though more recently he has found companionship with Ashe, the Avarosan warmother, and a home with her people. His almost inhuman strength and fortitude is legendary, and has delivered him and his new allies countless victories against the greatest of odds.</p>
-        </Row>
-      </Container>
-      <Container>
-          <Row className="header-section3">
+        </div>
+      </div>
+      <div  className='section' id='ability-section'>
+        <div className='section-container'>
+          <div className="header-section3">
             <div className='header-text3'>
               <h2 className='vertical-text3'>Into Battle</h2>
               <h1>Tryndamere <br/>Abilities</h1>
             </div>
-          </Row>
-          <Row className='trynd-abilities'>
-              <Col className='ability-icons'>
+          </div>
+          <div className='trynd-abilities'>
+              <div className='ability-icons'>
                 <div className="abilities-home">
                   {
                     Object.keys(abilities).map((ability) => {
@@ -219,8 +223,8 @@ function Home () {
                   <h2>{descriptionInfo.abilityName}</h2>
                   <p>{descriptionInfo.description}</p>
                 </div>
-              </Col>
-              <Col className='ability-vid'>
+              </div>
+              <div className='ability-vid'>
                 <ReactPlayer
                     url={abilityVid}
                     loop
@@ -229,11 +233,12 @@ function Home () {
                     height="100%"
                     playing
                   />
-              </Col>
-          </Row>
-      </Container>
-      <Container>
-        <Row className="carousel-contain">
+              </div>
+          </div>
+        </div>
+      </div>
+      <div className='section' id='carousel-section'>
+        <div className="carousel-contain">
           <div className="header-section4">
             <div className='header-text4'>
               <h2 className='vertical-text4'>Now they die!</h2>
@@ -247,6 +252,7 @@ function Home () {
             infinite
             containerClass="container-with-dots"
             itemClass="image-item"
+            // deviceType={this.props.deviceType}
           >
             {Object.keys(tryndSkins).map((skin) => {
               const skinNum = tryndSkins[skin].num;
@@ -262,9 +268,9 @@ function Home () {
               )
             })}
           </Carousel>
-        </Row>
-      </Container>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 }
 

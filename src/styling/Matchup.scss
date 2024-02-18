@@ -1,9 +1,13 @@
+.body-container {
+  background-image: url('../imgs/bg2.png');
+}
+
 .matchup-container {
   width: 100%;
   max-width: 1100px; /* Set initial max-width for smaller screens */
   padding: 13px;
   margin: 0 auto;
-  background-color: #53AF97;
+  background-color: #1B0D1C;
   min-height: 100vh; /* Change height to min-height to prevent overflow */
 }
 
@@ -56,6 +60,7 @@
   display: inline-block;
   img {
     margin: 0;
+    width: 65px;
   }
 }
 
@@ -64,8 +69,8 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
+  background-color: #2c202c;
+  border: 1px solid #E8E8E8;
   padding: 5px;
   border-radius: 5px;
   visibility: hidden;
@@ -82,14 +87,14 @@
 .difficulty {
   display: flex;
   width: 30%;
-  background-color: #626B6A;
+  background-color: #2B1429;
   align-content: center;
   justify-content: center;
   border-radius: 5px 5px 0 0;
 }
 
 .info-container {
-  background-color: #626B6A;
+  background-color: #2B1429;
   padding: 20px;
   border-radius: 0 5px 5px 5px;
 }

@@ -1,40 +1,48 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../styling/Card.scss';
-import Nav from '../components/Nav'
-
+// import Nav from '../components/Nav';
 
 function Data() {
   const champions = useSelector((state) => state.champions);
   const version = useSelector(state => state.version);
-  
-  console.log(champions)
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredChampions = Object.values(champions).filter(champion =>
+    champion.id.toLowerCase().startsWith(searchQuery.toLowerCase())
+  );
+
   return (
-    <>
-      <Nav />
-      <div className="container">
-        <form>
-          <input type="text" />
+    <div className='container'>
+      {/* <Nav /> */}
+      <form>
+          <input 
+            className='search-input'
+            type="search" 
+            placeholder="Search champions"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </form>
+      <div className="card-container">
+      
         <div className="wrapper">
-          {Object.keys(champions).map((championKey) => {
-            const champion = champions[championKey];
-            const championName = champion.id;
-            const imageUrl = `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${championName}.png`;
+          {filteredChampions.map((champion, index) => {
+            const imageUrl = `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion.id}.png`;
             return (
-              <div className="card" key={championKey}>
+              <div className="card" key={index}>
                 <h1>
-                  <Link to={`/champion/${championName}`}>{championName}</Link>
+                  <Link to={`/champion/${champion.id}`}>{champion.id}</Link>
                 </h1>
-                <img src={imageUrl} alt={championName} />
+                <img src={imageUrl} alt={champion.id} />
                 <p>{champion.blurb}</p>
               </div>
             );
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
