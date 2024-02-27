@@ -1,5 +1,6 @@
 .body-container {
   background-image: url('../imgs/bg2.png');
+  margin-top: -80px;
 }
 
 .matchup-container {
@@ -37,6 +38,7 @@
     align-items: center;
     flex-direction: column;
     margin-bottom: 80px;
+    margin-top: 70px;
 }
 
 .champion-header img {
@@ -47,6 +49,16 @@
 
 .matchup-info p {
   margin-bottom: 8px; /* Adjust margin for better spacing */
+  @media (max-width: 585px) {
+    text-align: center;
+  }
+}
+
+.matchup-info h1 {
+  @media (max-width: 585px) {
+    text-align: center;
+    margin-top: 100px;
+  }
 }
 
 .abilities {
@@ -77,6 +89,7 @@
   opacity: 0;
   transition: visibility 0s, opacity 0.3s linear;
   width: 300px;
+  text-align: center;
 }
 
 .img-hover:hover .hover-text {
@@ -103,6 +116,9 @@
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr 1fr;
+  @media (max-width: 585px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .summoner-spells {
@@ -110,10 +126,17 @@
   flex-direction: column;
   width: 100%;
   justify-items: center;
+  .or {
+    font-size: 19px;
+    justify-self: center;
+  }
 }
 
 .summoner-spells h1 {
   justify-self: flex-start;
+  @media (max-width: 585px) {
+    justify-self: center;
+  }
 }
 
 .items {
@@ -121,10 +144,17 @@
   flex-direction: column;
   width: 100%;
   justify-items: center;
+  .or {
+    font-size: 19px;
+    justify-self: center;
+  }
 }
 
 .items h1 {
   justify-self: flex-start;
+  @media (max-width: 585px) {
+    justify-self: center;
+  }
 }
 
 .ability-letter {
@@ -145,6 +175,10 @@
 .vs {
   display: flex;
   align-items: center;
+  @media (max-width: 585px) {
+    display: block;
+    text-align: center;
+  }
   .champ {
     width: 80px;
     margin: 20px;
@@ -152,16 +186,24 @@
 }
 
 .x3 {
-  font-size: 13px;
-  // text-align: center;
-  // position: absolute; /* Position the h1 absolutely */
-  bottom: 30%; /* Place the h1 50% from the top of the container */
-  left: 50%; /* Place the h1 50% from the left of the container */
-  transform: translate(-0%, -130%); /* Center the h1 both horizontally and vertically */
+  font-size: 14px;
   z-index: 1;
-  border: 1px solid black;
-  width: 15px;
-  height: 15px;
-  background-color: #060606;
-  padding: 1px;
+  height: 0;
+  margin: -13px 0 0 0 !important;
+}
+
+
+.invisible {
+  display: flex;
+  flex-direction: column;
+  .img {
+    width: 65px;
+    height: 77px;
+  }
+}
+
+.start-header {
+  h1 {
+    font-size: 45px;
+  }
 }

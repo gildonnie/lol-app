@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Other from './pages/Other';
 import ChampionDetails from './components/ChampionDetails';
 
+
 function App() {
   return (
     <>
@@ -14,7 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/champions" element={<Data />} />
         <Route path="/other" element={<Other />} />
-        <Route path="/champion/:championName" element={<ChampionDetails />} />
+        <Route path="/:championName" element={<ChampionDetails />} />
       </Routes>
     </>
   );

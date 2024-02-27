@@ -2,7 +2,26 @@ body {
     background-color: #060606;
     p {
         line-height: 2;
+        @media only screen and (max-width: 768px) {
+            font-size: 13px;
+        }
     }
+    h1 {
+        @media only screen and (max-width: 768px) {
+            font-size: 40px;
+        }
+    }
+}
+
+.container-con {
+    min-height: 100vh;
+    height: auto;
+    margin-bottom: 100px;
+   
+}
+
+.carousel-container {
+    padding-bottom: 100px;
 }
 
 .hero-image {
@@ -12,13 +31,21 @@ body {
     background-size: cover;
     width: 100%;
     height: 100vh;
+    @media only screen and (max-width: 769px) {
+        height: 80vh;
+    }
+  
     .header {
     display: flex;
     justify-content: center;
-    z-index: auto;
+    // z-index: auto;
         img {
-            width: 50%;
+            width: 100vh;
             margin-top: -60px;
+            @media only screen and (max-width: 769px) {
+                margin-top: 0;
+                width: 100%;
+            }
         }
     }
 }
@@ -28,6 +55,9 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    z-index: 1;
+    margin-top: -80px;
 }
 
 
@@ -47,11 +77,31 @@ body {
 }
 
 .lore-p {
+    p {
+        @media only screen and (max-width: 768px) {
+            text-align: center;
+        }
+    }
     .header-text {
         display: flex;
         padding-top: 50px;
         font-size: 35px;
+        @media only screen and (max-width: 768px) {
+            display: block;
+        }
+        h2 {
+            @media only screen and (max-width: 768px) {
+                display: none;
+            }
+        }
+        h1 {
+            @media only screen and (max-width: 768px) {
+                text-align: center;
+            }
+        }
+       
     }
+
     .vertical-text {
         font-size: 18px;
         letter-spacing: 5px;
@@ -96,16 +146,34 @@ body {
     flex-direction: column;
     padding-top: 50px;
     font-size: 35px;
+  
     .vertical-text3 {
         font-size: 16px;
         letter-spacing: 5px;
         transform: rotate(-90deg);
-        margin-right: -154px;
+        margin-right: -40px;
+        margin-top: 131px;
+   
     }
     .header-text3 {
         display: flex;
         flex-direction: row-reverse;
         text-align: end;
+        @media only screen and (max-width: 768px) {
+            display: block;
+        }
+        h2 {
+            height: 0;
+            @media only screen and (max-width: 768px) {
+                display: none;
+            }
+        }
+        h1 {
+            @media only screen and (max-width: 768px) {
+                text-align: center;
+                margin-right: 0 !important;
+            }
+        }
         h1 {
             margin-right: 160px;
         }
@@ -117,6 +185,15 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-top: 100px;
+    height: auto;
+    @media only screen and (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2, p {
+            text-align: center;
+        }
+    }
     .ability-vid {
         video {
             border: 4px solid #2A0E2A;
@@ -134,6 +211,9 @@ body {
             display: flex;
             justify-content: space-between;
             margin: 20px 0 20px 0;
+            @media only screen and (max-width: 442px) {
+                margin-left: -30px;
+            }
             .img-hover {
                 position: relative;
                 display: inline-block;
@@ -150,7 +230,7 @@ body {
                     position: absolute; /* Position the h1 absolutely */
                     // top: %; /* Place the h1 50% from the top of the container */
                     left: 50%; /* Place the h1 50% from the left of the container */
-                    transform: translate(-50%, -50%); /* Center the h1 both horizontally and vertically */
+                    transform: translate(-50%, -90%); /* Center the h1 both horizontally and vertically */
                     z-index: 1;
                     border: 1px solid black;
                     width: 15px;
@@ -175,6 +255,20 @@ body {
                 display: flex;
                 padding-top: 50px;
                 font-size: 35px;
+                @media only screen and (max-width: 768px) {
+                    justify-content: center;
+                }
+                h2 {
+                    @media only screen and (max-width: 768px) {
+                        display: none;
+                    }
+                }
+                h1, p {
+                    @media only screen and (max-width: 768px) {
+                        text-align: center;
+                        
+                    }
+                }
             }
             .vertical-text4 {
                 font-size: 18px;
@@ -195,96 +289,3 @@ body {
     }
    
 }
-
-
-
-// .section {
-//     // background-image: linear-gradient(rgba(0, 0, 0, .25), rgba(0, 0, 0, 0.25)), url('../imgs/bg2.png');
-//     // background-position: center;
-//     // background-repeat: no-repeat;
-//     // background-size: cover;
-//     width: 100%;
-//     min-height: 100vh;
-//     max-height: auto;
-//     position: relative;
-//     padding-bottom: 200px;
-//     h1 {
-//       margin: 0;
-//     }
-//     p {
-//       margin: 0;
-//     }
-// }
-
-// // .section-container {
-// //     max-width: 1080px;
-// //     margin: 0 auto;
-// //     min-height: 100%;
-// //     height: 100%; /* Set height to 100% */
-// //     position: absolute;
-// //     position: relative; /* Use relative positioning */
-// // }
-
-// .infoContainer {
-//     display: grid;
-//     grid-template-columns: 1fr 1fr;
-//     align-content: center;
-//     justify-items: center;
-//     width: 100%;
-//     max-width: 1080px;
-//     padding-top: 200px;
-//     margin: 0 auto;
-// }
-
-// .abilitiesContainer {
-//     display: grid;
-//     grid-template-columns: 1fr 1fr;
-//     align-content: center;
-//     justify-items: center;
-//     width: 100%;
-//     max-width: 1080px;
-//     margin: 0 auto;
-// }
-
-//
-    
-// }
-
-
-
-
-
-
-// 
-
-
-
-
-
-//   .hover-text {
-//     position: absolute;
-//     top: 100%;
-//     left: 50%;
-//     transform: translateX(-50%);
-//     background-color: rgba(0, 0, 0, 0.8);
-//     color: white;
-//     padding: 5px;
-//     border-radius: 5px;
-//     visibility: hidden;
-//     opacity: 0;
-//     transition: visibility 0s, opacity 0.3s linear;
-//     width: 300px;
-//   }
-  
-//   .img-hover:hover .hover-text {
-//     visibility: visible;
-//     opacity: 1;
-//   }
-
-
-
-
-
-// #carousel-section {
-//     min-height: 50% !important;
-// }

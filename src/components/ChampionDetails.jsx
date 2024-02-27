@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-// import { v4 as uuidv4 } from 'uuid';
+import ScrollReveal from 'scrollreveal';
+import { motion } from 'framer-motion';
 import TryndMatchups from '../components/NewUpdatedMatches.json';
+import ScollTop from './ScollTop'
 import '../styling/Matchup.scss'
 
 function ChampionDetails() {
@@ -64,7 +66,7 @@ function ChampionDetails() {
           const abilities = response.data.data[championName].spells
           const passive = response.data.data[championName].passive
           const spells = spellResponse.data.data
-          console.log(spells)
+          console.log(response.data.data)
           setAbiliites({
             passive: passive,
             q: abilities[0],
@@ -196,10 +198,22 @@ function ChampionDetails() {
 // https://ddragon.leagueoflegends.com/cdn/12.3.1/img/item/1001.png item img
 // https://ddragon.leagueoflegends.com/cdn/14.3.1/img/spell/SummonerFlash.png
 
+
+useEffect(() => {
+  ScrollReveal().reveal('#bottom-anime', {
+    origin: 'bottom',
+    distance: '20px',
+    duration: 600,
+    delay: 500,
+    easing: 'ease-in-out',
+  });
+  }, [])
+
   return (
     <div className='body-container'>
+      <ScollTop />
       {matchingChampion ? (
-        <div className='matchup-container'>
+        <div className='matchup-container' id='bottom-anime'>
           <div className='champion-header'>
             <div className="vs">
               <img className='champ' src={tryndImg} alt="trynd" />
@@ -216,7 +230,7 @@ function ChampionDetails() {
                     return null;
                   }
                   return (
-                    <div key={ability.id} className='img-hover'>
+                    <motion.div key={ability.id} className='img-hover' whileHover={{ scale: 1.1 }}>
                       <h1 className='ability-letter'>{capitlized}</h1>
                       {!abilityData.id ? 
                       <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${abilityData.image.full}`} alt="" /> : null}
@@ -224,13 +238,14 @@ function ChampionDetails() {
                       <div className='hover-text' key={ability.id}>
                         <p dangerouslySetInnerHTML={{ __html: abilities[ability].description }} />
                         {abilityData.id ? 
-                          <>
+                          <div className='hover-info'>
+                            <hr />
                             <p>Range: {abilities[ability].rangeBurn}</p>
                             <p>Cooldown: {abilities[ability].cooldownBurn}</p>
-                          </>
+                          </div>
                         : null}
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })
               }
@@ -256,14 +271,19 @@ function ChampionDetails() {
                     )}
                     {itemImg.item3 ? itemImg.item3 && itemImg.item3.full && (
                       <>
-                        <h1>OR</h1>
+                        <h1 className='or'>OR</h1>
                         <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${itemImg.item3.full}`} alt="starting item" />
                         <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${itemImg.item2.full}`} alt="starting item" />
                         {itemImg.item4 ? (
                           <p className='x3'>{itemImg.item4}</p>
                         ) : null}
                       </>
-                    ) : null}
+                    ) : sumImg.sum3 ? 
+                      <div className='invisible'>
+                        <p></p>
+                        <div className='img'></div>
+                        <div className='img'></div>
+                      </div> : null} 
                   </div>
                   <div className="summoner-spells">
                     <h1>Starting Spells</h1>
@@ -275,7 +295,7 @@ function ChampionDetails() {
                     )}
                     {sumImg.sum3 ? sumImg.sum3 && sumImg.sum3.full && (
                       <>
-                        <h1>OR</h1>
+                        <h1 className='or'>OR</h1>
                         <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${sumImg.sum1.full}`} alt="spells" />
                         <img src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${sumImg.sum3.full}`} alt="spells" />
                       </>

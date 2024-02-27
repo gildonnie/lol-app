@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import '../styling/Home.scss';
@@ -9,6 +9,7 @@ import ReactPlayer from 'react-player';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { motion } from 'framer-motion';
+import ScrollReveal from 'scrollreveal';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -59,8 +60,48 @@ function Home () {
       r: {}
   })
 
+  const [selectedAbility, setSelectedAbility] = useState('passive');
+
+
+
   const tryn = "Tryndamere";
   const version = useSelector(state => state.version);
+
+  useEffect(() => {
+
+    ScrollReveal().reveal('#bottom-anime', {
+      origin: 'bottom',
+      distance: '20px',
+      duration: 1000,
+      delay: 200,
+      easing: 'ease-in-out',
+  });
+
+  ScrollReveal().reveal('#left-anime', {
+      origin: 'left',
+      distance: '20px',
+      duration: 1000,
+      delay: 200,
+      easing: 'ease-in-out',
+  });
+  ScrollReveal().reveal('#right-anime', {
+    origin: 'right',
+    distance: '20px',
+    duration: 1000,
+    delay: 200,
+    easing: 'ease-in-out',
+  });
+
+    ScrollReveal().reveal('#para-anime', { delay: 400 });
+    ScrollReveal().reveal('#zoom-out', {
+      duration: 800,
+      scale: 0.25, 
+      easing: 'ease-in-out',
+  });
+  }, [])
+
+
+
 
   useEffect(() => {
     console.log('Component rendered');
@@ -123,6 +164,7 @@ function Home () {
   console.log(abilities)
 
   const handleAbility = (id) => {
+    setSelectedAbility(id);
     switch (id) {
       case 'passive':
         setAbilityVid(pVid)
@@ -156,86 +198,103 @@ function Home () {
     <Container fluid className='main'>
       <Container fluid className='hero-image'>
         <Row className='header'>
-          <img className='logo' src={Logo} alt="logo" />
+          <img id='zoom-out' className='logo' src={Logo} alt="logo" />
         </Row>
       </Container>
-      <Container>
-        <Row className="header-section">
-          <img src={TryndLife} alt="trynd" />
+      <Container className='container-con'>
+        <Row className="header-section" id='bottom-anime'>
+          <img src={TryndLife} alt="trynd" 
+               style={{ position: 'relative' }}
+          />
         </Row>
         <Row className='lore-p'>
-          <div className='header-text'>
+          <div  className='header-text' id='left-anime'>
             <h2 className='vertical-text'>Early Life</h2>
             <h1>Tryndamere <br/>Lore</h1>
           </div>
-          <p>Tryndamere was part of a nameless barbarian tribe known for their stamina and prowess in combat, which forged blades based on their god's tusks. They fought raiding tribes, the beasts of the mountains and Noxus Crest icon Noxian armies trying to claim territory in the Freljord. As he grew up among his tribe, Tryndamere developed into a strong warrior.
+          <p id='para-anime'>Tryndamere was part of a nameless barbarian tribe known for their stamina and prowess in combat, which forged blades based on their god's tusks. They fought raiding tribes, the beasts of the mountains and Noxus Crest icon Noxian armies trying to claim territory in the Freljord. As he grew up among his tribe, Tryndamere developed into a strong warrior.
 
           One night, the tribe witnessed an unnatural storm from the east, where the darkin Aatrox Aatrox stood before them. Some of the barbarians bowed to him under the belief that he was their Boar God Boar God, but he slaughtered them all. Filled with rage, Tryndamere charged at Aatrox, but was swatted away. As he lay on the verge of death, he was revived by a rage he never felt before, his willpower and thirst for vengeance preventing him from dying.
 
           Tryndamere found his tribe's last remaining survivors, knowing they were doomed with enemies surrounding them throughout the Freljord. Hearing rumors of a tribe which worshipped the reincarnation of Avarosa, they set off to the west where they met the Freljord Avarosan Avarosan. Eager to gain respect among the tribe, he challenged the Avarosans to duels. However, they began to fear him due to his savage, furious way of fighting and how his wounds regenerated faster the more rage he held. In one duel he was so lost in his fury that he was on the verge of killing his opponent, but Braum Braum, an Iceborn allied with the Avarosan, stood in the way with his shield. Tryndamere kept attacking Braum's unbreakable shield until his rage subsided, and the two eventually became friends. Afterward, the tribe's survivors were welcomed into the Avarosan and Tryndamere was arranged to form a political marriage with the Avarosan warmother, Ashe Ashe, but the two slowly grew into a genuine relationship.</p>
         </Row>
       </Container>
-      <Container>
-        <Row className="header-section2">
+      <Container className='container-con'>
+        <Row className="header-section2" id='bottom-anime'>
           <img src={TryndFight} alt="trynd" />
         </Row>
         <Row className='lore-p2'>
-          <div className='header-text2'>
+          <div className='header-text2' id='bottom-anime'>
             <h1>Role Fighter</h1>
             <h2>Difficulty Moderate</h2>
           </div>
-          <p>Fueled by unbridled fury and rage, Tryndamere once carved his way through the Freljord, openly challenging the greatest warriors of the north to prepare himself for even darker days ahead. The wrathful barbarian has long sought revenge for the annihilation of his clan, though more recently he has found companionship with Ashe, the Avarosan warmother, and a home with her people. His almost inhuman strength and fortitude is legendary, and has delivered him and his new allies countless victories against the greatest of odds.</p>
+          <p id='para-anime'>Fueled by unbridled fury and rage, Tryndamere once carved his way through the Freljord, openly challenging the greatest warriors of the north to prepare himself for even darker days ahead. The wrathful barbarian has long sought revenge for the annihilation of his clan, though more recently he has found companionship with Ashe, the Avarosan warmother, and a home with her people. His almost inhuman strength and fortitude is legendary, and has delivered him and his new allies countless victories against the greatest of odds.</p>
         </Row>
       </Container>
-      <Container>
+      <Container className='container-con'>
           <Row className="header-section3">
-            <div className='header-text3'>
+            <div className='header-text3' id='right-anime'>
               <h2 className='vertical-text3'>Into Battle</h2>
               <h1>Tryndamere <br/>Abilities</h1>
             </div>
           </Row>
           <Row className='trynd-abilities'>
-              <Col className='ability-icons'>
-                <div className="abilities-home">
-                  {
-                    Object.keys(abilities).map((ability) => {
-                      const capitlized = ability.toUpperCase().charAt(0)
-                      const abilityData = abilities[ability];
-                      if (!abilityData || !abilityData.image) {
-                        return null;
-                      }
-                      return (
-                        <div key={ability.id} className='img-hover'>
-                          <h1 className='ability-letter-home'>{capitlized}</h1>
-                          {!abilityData.id ? 
-                          <motion.img whileHover={{ scale: 1.1 }} onClick={() => handleAbility(ability)} src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${abilityData.image.full}`} alt="" /> : null}
-                          <motion.img whileHover={{ scale: 1.1 }} onClick={() => handleAbility(ability)} key={ability.id} src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${abilityData.image.full}`} alt="" />
-                        </div>
-                      );
-                    })
+            <Col className='ability-icons'>
+              <div className="abilities-home">
+                {Object.keys(abilities).map((abilityName) => {
+                  const abilityData = abilities[abilityName];
+                  const capitlized = abilityName.toUpperCase().charAt(0);
+
+                  if (!abilityData || !abilityData.image) {
+                    return null;
                   }
-                </div>
-                <div className="ability-description">
-                  <h2>{descriptionInfo.abilityName}</h2>
-                  <p>{descriptionInfo.description}</p>
-                </div>
-              </Col>
-              <Col className='ability-vid'>
-                <ReactPlayer
-                    url={abilityVid}
-                    loop
-                    muted
-                    width="100%"
-                    height="100%"
-                    playing
-                  />
-              </Col>
+
+                  return (
+                    <motion.div
+                      key={abilityName}
+                      className="img-hover"
+                      id="para-anime"
+                      whileHover={{ scale: 1.2 }}
+                      animate={{ scale: selectedAbility === abilityName ? 1.2 : 1 }}
+                    >
+                      <h1 className="ability-letter-home">{capitlized}</h1>
+                      {!abilityData.id ? (
+                        <img
+                          onClick={() => handleAbility(abilityName)}
+                          src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${abilityData.image.full}`}
+                          alt=""
+                        />
+                      ) : null}
+                      <img
+                        onClick={() => handleAbility(abilityName)}
+                        src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${abilityData.image.full}`}
+                        alt=""
+                      />
+                    </motion.div>
+                  );
+                })}
+              </div>
+              <div className="ability-description" id='para-anime'>
+                <h2>{descriptionInfo.abilityName}</h2>
+                <p>{descriptionInfo.description}</p>
+              </div>
+            </Col>
+            <Col className='ability-vid' id='right-anime'>
+              <ReactPlayer
+                  url={abilityVid}
+                  loop
+                  muted
+                  width="100%"
+                  height="100%"
+                  playing
+                />
+            </Col>
           </Row>
       </Container>
-      <Container>
+      <Container className='carousel-container'>
         <Row className="carousel-contain">
           <div className="header-section4">
-            <div className='header-text4'>
+            <div className='header-text4' id='left-anime'>
               <h2 className='vertical-text4'>Now they die!</h2>
               <h1>Tryndamere <br/>skins</h1>
             </div>
@@ -255,7 +314,7 @@ function Home () {
               const newName = name === 'default' ? 'OG Tryndamere' : name;
 
               return (
-                <div className='skin-container'>
+                <div className='skin-container' id='para-anime'>
                   <h2 className='skin-name'>{newName}</h2>
                   <img src={skinImg} alt="tryn-skin" />
                 </div>

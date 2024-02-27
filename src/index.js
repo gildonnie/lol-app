@@ -8,18 +8,13 @@ import Nav from './components/Nav';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-function NavWithLocation() {
-  const location = useLocation();
-  const currentPage = location.pathname;
-  return <Nav currentPage={currentPage} />;
-}
 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <BrowserRouter>
         <PersistGate loading={null} persistor={persistor}>
-          <NavWithLocation />
+          <Nav />
           <App />
         </PersistGate>
       </BrowserRouter>

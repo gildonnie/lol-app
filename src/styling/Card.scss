@@ -2,6 +2,7 @@
     max-width: 1080px;
     margin: 0 auto;
     padding: 20px;
+    margin-top: 10px;
 
     form {
         text-align: end;
@@ -48,6 +49,9 @@
 
     @media (max-width: 767.98px) {
         grid-template-columns: repeat(2, auto);
+    }
+    @media (max-width: 585px) {
+        grid-template-columns: repeat(1, auto);
     }
 }
 
