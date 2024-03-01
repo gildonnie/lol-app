@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ScrollReveal from 'scrollreveal';
-import { motion } from 'framer-motion';
 import '../styling/Card.scss';
-// import Nav from '../components/Nav';
 
 function Data() {
   const champions = useSelector((state) => state.champions);

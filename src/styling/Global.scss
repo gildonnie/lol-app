@@ -8,4 +8,9 @@ body {
     font-style: normal;
     background: radial-gradient(ellipse at center, #32101e 0%,#441e39 31%,#150c1b 100%) !important;
     background-repeat: no-repeat;
+    h1, h2, li {
+        font-family: "Anta", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    }
 }

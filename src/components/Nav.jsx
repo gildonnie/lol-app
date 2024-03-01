@@ -15,7 +15,7 @@ function Nav() {
         setShowMenuIcon(true);
       } else {
         setShowMenuIcon(false);
-        setMenuOpen(false); // Close menu if screen size changes above the breakpoint
+        setMenuOpen(false); 
       }
     };
 
@@ -31,7 +31,6 @@ function Nav() {
 
   return (
     <div className='containerNav' id='para-anime'>
-      {/* Overlay */}
       <div className={`overlay ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}></div>
 
       {showMenuIcon && (

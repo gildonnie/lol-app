@@ -93,10 +93,9 @@ function Home () {
   });
 
     ScrollReveal().reveal('#para-anime', { delay: 400 });
+
     ScrollReveal().reveal('#zoom-out', {
-      duration: 800,
-      scale: 0.25, 
-      easing: 'ease-in-out',
+     delay: 200 
   });
   }, [])
 
@@ -198,9 +197,10 @@ function Home () {
     <Container fluid className='main'>
       <Container fluid className='hero-image'>
         <Row className='header'>
-          <img id='zoom-out' className='logo' src={Logo} alt="logo" />
+          <img className='logo' src={Logo} alt="logo" />
         </Row>
       </Container>
+      
       <Container className='container-con'>
         <Row className="header-section" id='bottom-anime'>
           <img src={TryndLife} alt="trynd" 
