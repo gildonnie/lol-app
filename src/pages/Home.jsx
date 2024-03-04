@@ -110,7 +110,7 @@ function Home () {
         const version = response.data.v;
         dispatch({ type: 'SET_VERSION', payload: version });
 
-        const championsResponse = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`);
+        const championsResponse = await axios.get(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`);
         dispatch({ type: 'SET_CHAMPIONS', payload: championsResponse.data.data });
 
         // const champNameData = Object.values(ChampNames);
@@ -120,7 +120,7 @@ function Home () {
         // console.log(nameRandom);
         // setChampName(nameRandom);
 
-        const champResponse = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/${tryn}.json`);
+        const champResponse = await axios.get(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/${tryn}.json`);
         const skin = champResponse.data.data[tryn].skins;
         setTryndSkins(skin);
         // const skinsData = Object.values(skin);

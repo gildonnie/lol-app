@@ -53,8 +53,8 @@ function ChampionDetails() {
 
   console.log(championName)
 
-  const imageUrl = `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${championName}.png`;
-  const tryndImg = `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/Tryndamere.png`;
+  const imageUrl = `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${championName}.png`;
+  const tryndImg = `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/Tryndamere.png`;
 
     useEffect(() => {
       const getAbilities = async () => {

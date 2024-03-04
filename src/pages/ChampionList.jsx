@@ -39,7 +39,7 @@ function Data() {
       
         <div className="wrapper">
           {filteredChampions.map((champion, index) => {
-            const imageUrl = `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion.id}.png`;
+            const imageUrl = `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion.id}.png`;
             return (
               <div className="card" key={index} id='bottom-anime'>
                 <h1>
