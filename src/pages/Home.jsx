@@ -21,6 +21,7 @@ import qVid from '../videos/q.mp4';
 import wVid from '../videos/w.mp4';
 import eVid from '../videos/e.mp4';
 import rVid from '../videos/r.mp4';
+import TopBtn from '../components/ToTop';
 
 const responsive = {
   desktop: {
@@ -195,6 +196,7 @@ function Home () {
 
   return (
     <Container fluid className='main'>
+      <TopBtn />
       <Container fluid className='hero-image'>
         <Row className='header'>
           <img className='logo' src={Logo} alt="logo" />

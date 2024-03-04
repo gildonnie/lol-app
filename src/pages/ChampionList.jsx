@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ScrollReveal from 'scrollreveal';
+import TopBtn from '../components/ToTop';
 import '../styling/Card.scss';
 
 function Data() {
@@ -25,7 +26,7 @@ function Data() {
 
   return (
     <div className='container'>
-      {/* <Nav /> */}
+      <TopBtn />
       <form>
           <input 
             className='search-input'

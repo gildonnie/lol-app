@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { motion } from 'framer-motion';
+import TopBtn from '../components/ToTop';
 import '../styling/Resources.scss'
 import foggedImg from '../imgs/fogged.jpg'; 
 import ScrollReveal from 'scrollreveal';
@@ -24,6 +25,7 @@ function Other() {
 
   return (
     <Container fluid className='main-res'>
+      <TopBtn />
       <Container fluid className='res-container'>
           <div className="text-container">
             <h1>Special Shoutout</h1>

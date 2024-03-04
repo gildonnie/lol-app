@@ -1,0 +1,34 @@
+/* ScrollToTopButton.css */
+.topBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #531f53;
+  color: #ffffff;
+  text-decoration: none;
+  width: 50px;
+  height: 45px;
+  text-align: center;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 5px;
+  opacity: .75;
+  overflow: none;
+  transition: 0.3s ease;
+  .icon {
+    font-size: 23px;
+  }
+}
+
+.topBtn.show {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.topBtn:hover {
+  border-radius: 0 15px 0 15px;
+  background-color: #691969;
+}
